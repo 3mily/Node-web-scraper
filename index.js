@@ -2,12 +2,14 @@ var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
 
+// GET request
 request("http://substack.net/images/", function (error, response, body) {
   if (!error && response.statusCode == 200) {
     console.log("success!");
+
+    // Node equivalent of Nokogiri gem
     var $ = cheerio.load(body);
 
-    // for each tr do ~~
     $('tr').each(function(i, element){
       var url = "http://substack.net/images" + element.children[2].children[0].attribs.href;
       console.log("-Url: " + url);
@@ -28,5 +30,8 @@ request("http://substack.net/images/", function (error, response, body) {
 });
 
 console.log("--------- loading... ---------");
+
+
+
 
 
