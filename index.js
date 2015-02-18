@@ -1,4 +1,5 @@
 var fs = require('fs');
+var csv = require('./images.csv')
 var request = require('request');
 var cheerio = require('cheerio');
 
@@ -22,16 +23,17 @@ request("http://substack.net/images/", function (error, response, body) {
       } else {
         var fileType = "directory"
       }
+
       console.log("-File type: " + fileType);
       console.log("=====");
+
+      // // Write to CSV
+      // var csvLines = url + "-" + permission + "-" + fileType
+      // fs.write('./images.csv', csvLines, 'a');
 
     });
   };
 });
 
 console.log("--------- loading... ---------");
-
-
-
-
 
